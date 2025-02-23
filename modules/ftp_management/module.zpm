@@ -1,6 +1,5 @@
 <style>
 
-
 /* Style all input fields */
 input {
   width: 100%;
@@ -16,6 +15,11 @@ input {
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
+}
+
+/* tg - input field overflow fix */
+#inFTPUsername {
+  width: 85%;
 }
 
 /* Style the container for inputs */
@@ -179,7 +183,7 @@ input[type=submit] {
                         <table class="table table-striped">
                             <tr>
                                 <th nowrap="nowrap"><: Username :>:</th>
-                                <td><input name="inFTPUsername" type="text" id="inFTPUsername" size="30" value="" maxlength="50" required/></td>
+                                <td nowrap="nowrap"><@ CurrentUserName @>_<input name="inFTPUsername" type="text" id="inFTPUsername" size="30" value="" maxlength="50" required/></td>
 								
                             </tr>
                             <tr>
@@ -210,11 +214,11 @@ input[type=submit] {
                             </tr>
                             <tr>
                                 <th nowrap="nowrap"><: Home directory :>:</th>
-                                <td><input name="inAutoHome" type="radio" id="inAutoHome" value="1" onclick="hide_div('showmasterselect')&hide_div('showdomainselect');" CHECKED />&nbsp;<: Create a new home directory :></td>
+                                <td><input name="inAutoHome" type="radio" id="inAutoHome" value="1" onclick="hide_div('showmasterselect')&hide_div('showdomainselect');" CHECKED />&nbsp;<: Create a new (FTP) Home directory :></td>
                             </tr>
                             <tr>
                                 <th>&nbsp;</th>
-                                <td><input name="inAutoHome" type="radio" id="inAutoHome" value="2" onclick="show_div('showmasterselect')&hide_div('showdomainselect');" />&nbsp;<: Set Master home directory :></td>
+                                <td><input name="inAutoHome" type="radio" id="inAutoHome" value="2" onclick="show_div('showmasterselect')&hide_div('showdomainselect');" />&nbsp;<: Set for Root/Master (FTP) Home directory :></td>
                             </tr>
                             <tr>
                                 <th>&nbsp;</th>
@@ -231,7 +235,7 @@ input[type=submit] {
                             </tr>
                             <tr>
                                 <th>&nbsp;</th>
-                                <td><input name="inAutoHome" type="radio" id="inAutoHome" value="3" onclick="show_div('showdomainselect')&hide_div('showmasterselect');" />&nbsp;<: Use Domain directory :></td>
+                                <td><input name="inAutoHome" type="radio" id="inAutoHome" value="3" onclick="show_div('showdomainselect')&hide_div('showmasterselect');" />&nbsp;<: Use Domain/Subdomain (FTP) Home directory :></td>
                             </tr>
                             <tr>
                                 <th>&nbsp;</th>
@@ -361,12 +365,12 @@ input[type=submit] {
 	myInput.onfocus = function() {
 	  	document.getElementById("message").style.display = "block";
 	}
-	
+
 	// When the user clicks outside of the password field, hide the message box
 	myInput.onblur = function() {
 	  	document.getElementById("message").style.display = "none";
 	}
-	
+
 	// When the user starts to type something inside the password field
 	myInput.onclick = function() {
 		  // Validate lowercase letters
